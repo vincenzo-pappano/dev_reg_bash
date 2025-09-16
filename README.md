@@ -1,8 +1,20 @@
 <h1>A bash utility to support the device registry API</h1>
 
+
+<h2>Manual Interaction with the Device Registry</h2>
+
+Once a certificate has been attached to a device, the device can be registered with the Device Registry (**"Import from FMS"**) and then sent to the backend (**"Send to IoT.ON"**)
+
+
+<h2>Certificate background</h2>
+The certificates are acquired through a Jenkins job. A single certificate is attached to the charger's mainboard. The certificate is then imported into the Device Registry and sent to IoT.ON
+
+
 <details>
-  <summary><h2>Certificate background</h2></summary>
-  A query to the manufacturer backend (environment ID/customer ID) will produce the following:
+  <summary><h4>Additional Details</h4></summary>
+  <img width="600" src="images/Create AWS Certificate.png">
+  
+  Running the AWS certificate creation Jenkins jobs (for an environment ID/customer ID pair) will produce the following (for a single certificate):
    - devprefix
    - uri
    - serial
