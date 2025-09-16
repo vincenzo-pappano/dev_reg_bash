@@ -105,7 +105,15 @@ Once a certificate has been configured for a device, the device can be registere
 
 The bash scripts eliminate the need for manual interaction with the Device Registry. They provide a bash implementation of the Device Registry API. Assumptions: username and passwords are environment variables, the JSON file with a single certificate has already been attached to a mainboard
 
-**$$\textcolor{red}{\verb|. ./dev_reg_auth.sh MFA|}$$**
+Typical sequence of operations:
+
+    . ./dev_reg_auth.sh MFA
+    . ./dev_reg_register.sh DevReg-0009.json
+    . ./dev_reg_provision.sh
+    . ./dev_reg_get_state.sh
+    . ./dev_reg_get_events.sh
+
+Authorize User: **$$\textcolor{red}{\verb|. ./dev_reg_auth.sh MFA|}$$**
 
 <details>
 <summary><h4>Details</h4></summary>
@@ -134,7 +142,7 @@ The bash scripts eliminate the need for manual interaction with the Device Regis
 </details>
 
 
-**$$\textcolor{red}{\verb|. ./dev_reg_register.sh DevReg-0009.json|}$$**
+Register Device: **$$\textcolor{red}{\verb|. ./dev_reg_register.sh DevReg-0009.json|}$$**
 
 <details>
 <summary><h4>Details</h4></summary>
@@ -173,7 +181,7 @@ The bash scripts eliminate the need for manual interaction with the Device Regis
 </details>
 
 
-**$$\textcolor{red}{\verb|. ./dev_reg_provision.sh|}$$**
+Provision Device: **$$\textcolor{red}{\verb|. ./dev_reg_provision.sh|}$$**
 
 <details>
 <summary><h4>Details</h4></summary>
@@ -192,7 +200,7 @@ The bash scripts eliminate the need for manual interaction with the Device Regis
 </details>
 
 
-**$$\textcolor{red}{\verb|. ./dev_reg_get_state.sh|}$$**
+Get Device State: **$$\textcolor{red}{\verb|. ./dev_reg_get_state.sh|}$$**
 
 <details>
     <summary><h4>Details</h4></summary>
@@ -235,7 +243,7 @@ The bash scripts eliminate the need for manual interaction with the Device Regis
 </details>
 
 
-**$$\textcolor{red}{\verb|. ./dev_reg_get_events.sh|}$$**
+Get Device Events: **$$\textcolor{red}{\verb|. ./dev_reg_get_events.sh|}$$**
 
 <details>
     <summary><h4>Details</h4></summary>
