@@ -1,11 +1,6 @@
 <h1>A bash utility to support the device registry API</h1>
 
 
-<h2>Manual Interaction with the Device Registry</h2>
-
-Once a certificate has been attached to a device, the device can be registered with the Device Registry (**"Import from FMS"**) and then sent to the backend (**"Send to IoT.ON"**)
-
-
 <h2>Certificate background</h2>
 The certificates are acquired through a Jenkins job. A single certificate is attached to the charger's mainboard. The certificate is then imported into the Device Registry and sent to IoT.ON
 
@@ -101,14 +96,20 @@ and **DevReg-datetime.json**
 
 
 
+<h2>Manual Interaction with the Device Registry</h2>
+
+Once a certificate has been configured for a device, the device can be registered with the Device Registry (**"Import from FMS"**) and then sent to the backend (**"Send to IoT.ON"**)
+
+
 <h2>Bash Scripts</h2>
 
-Assumptions: username and passwords are environment variables, the JSON file with a single certificate has already been attached to a mainboard
+The bash scripts eliminate the need for manual interaction with the Device Registry. They provide a bash implementation of the Device Registry API. Assumptions: username and passwords are environment variables, the JSON file with a single certificate has already been attached to a mainboard
 
-Script (1) **. ./dev_reg_auth.sh MFA**
+**$$\textcolor{red}{\verb|. ./dev_reg_auth.sh MFA|}$$**
 
 <details>
 <summary><h4>Details</h4></summary>
+  
     pi@raspberrypi5:~/ioton $ . ./dev_reg_auth.sh 150282
     
     HTTP_STATUS=200
@@ -133,10 +134,11 @@ Script (1) **. ./dev_reg_auth.sh MFA**
 </details>
 
 
-Script (2) **. ./dev_reg_register.sh DevReg-0009.json**
+**$$\textcolor{red}{\verb|. ./dev_reg_register.sh DevReg-0009.json|}$$**
 
 <details>
 <summary><h4>Details</h4></summary>
+  
     pi@raspberrypi5:~/ioton $ . ./dev_reg_register.sh DevReg-0009.json 
     
     === PAYLOAD ===
@@ -170,10 +172,12 @@ Script (2) **. ./dev_reg_register.sh DevReg-0009.json**
 
 </details>
 
-Script (3) **. ./dev_reg_provision.sh**
+
+**$$\textcolor{red}{\verb|. ./dev_reg_provision.sh|}$$**
 
 <details>
 <summary><h4>Details</h4></summary>
+  
     pi@raspberrypi5:~/ioton $ . ./dev_reg_provision.sh 
     
     HTTP_STATUS=202
@@ -187,10 +191,12 @@ Script (3) **. ./dev_reg_provision.sh**
     (empty)
 </details>
 
-Script (4) **. ./dev_reg_get_state.sh**
+
+**$$\textcolor{red}{\verb|. ./dev_reg_get_state.sh|}$$**
 
 <details>
     <summary><h4>Details</h4></summary>
+  
     pi@raspberrypi5:~/ioton $ . ./dev_reg_get_state.sh 
     
     HTTP_STATUS=200
@@ -229,10 +235,11 @@ Script (4) **. ./dev_reg_get_state.sh**
 </details>
 
 
-Script (5) **. ./dev_reg_get_events.sh**
+**$$\textcolor{red}{\verb|. ./dev_reg_get_events.sh|}$$**
 
 <details>
     <summary><h4>Details</h4></summary>
+  
     pi@raspberrypi5:~/ioton $ . ./dev_reg_events.sh 
     
     
