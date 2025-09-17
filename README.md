@@ -9,7 +9,7 @@ The certificates are acquired through a Jenkins job. A single certificate is att
 
   -----
   
-  <img  style="border:3px solid black;" width="600" src="images/Create AWS Certificate.png">
+  <img  style="border:3px solid black;" width="1200" src="images/Create AWS Certificate -- SUMMARY.png">
   
   -----
   
