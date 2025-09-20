@@ -124,7 +124,7 @@ Typical sequence of operations:
     . ./dev_reg_get_state.sh
     . ./dev_reg_get_events.sh
 
-### Authorize User: `. ./dev_reg_auth.sh MFA`
+#### Authorize User: `. ./dev_reg_auth.sh MFA`
 
 <details>
 <summary><h5>Details</h5></summary>
@@ -152,7 +152,7 @@ Typical sequence of operations:
     Auth OK. access_key / secret_access_key / session_token exported.
 </details>
 
-### Register Device: `. ./dev_reg_register.sh DevReg-0009.json`
+#### Register Device: `. ./dev_reg_register.sh DevReg-0009.json`
 
 | Enpoint | Request Body | Response(s) |
 | :------- | :------: | -------: |
@@ -202,7 +202,7 @@ Extract `device_registry_id` from payload
 </details>
 
 
-### Provision Device: `. ./dev_reg_provision.sh`
+#### Provision Device: `. ./dev_reg_provision.sh`
 
 | Enpoint | Request Body | Response(s) |
 | :------- | :------: | -------: |
@@ -230,7 +230,7 @@ Extract `device_registry_id` from payload
 </details>
 
 
-### Get Device State: `. ./dev_reg_get_state.sh`
+#### Get Device State: `. ./dev_reg_get_state.sh`
 
 <details>
     <summary><h5>Details</h5></summary>
@@ -273,7 +273,7 @@ Extract `device_registry_id` from payload
 </details>
 
 
-### Get Device Events: `. ./dev_reg_get_events.sh`
+#### Get Device Events: `. ./dev_reg_get_events.sh`
 
 <details>
     <summary><h5>Details</h5></summary>
