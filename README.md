@@ -1,17 +1,17 @@
-<h1>A bash utility to support the device registry API</h1>
+# A bash utility to support the device registry API
 
 
 <h2>Certificate background</h2>
 The certificates are acquired through a Jenkins job. A single certificate is attached to the charger's mainboard. The certificate is then imported into the Device Registry and sent to IoT.ON
-
-<details>
-  <summary><h4>Additional Details</h4></summary>
 
   -----
   
   <img  style="border:3px solid black;" width="1200" src="images/Create AWS Certificate -- SUMMARY.png">
   
   -----
+
+<details>
+  <summary><h5>Additional Details</h5></summary>
   
   Running the AWS certificate creation Jenkins jobs (for an environment ID/customer ID pair) will produce the following (for a single certificate):
    - devprefix
@@ -96,12 +96,18 @@ and **DevReg-datetime.json**
 
 
 
-<h2>Manual Interaction with the Device Registry</h2>
+## Manual Interaction with the Device Registry
 
 Once a certificate has been configured for a device, the device can be registered with the Device Registry (**"Import from FMS"**) and then sent to the backend (**"Send to IoT.ON"**)
 
+  -----
+  
+  <img  style="border:3px solid black;" width="900" src="images/DeviceRegistry.png">
+  
+  -----
 
-<h2>Bash Scripts</h2>
+
+## Bash Scripts
 
 The bash scripts eliminate the need for manual interaction with the Device Registry. They provide a bash implementation of the Device Registry API. Assumptions: username and passwords are environment variables, the JSON file with a single certificate has already been attached to a mainboard
 
@@ -113,10 +119,10 @@ Typical sequence of operations:
     . ./dev_reg_get_state.sh
     . ./dev_reg_get_events.sh
 
-Authorize User: **$$\textcolor{red}{\verb|. ./dev_reg_auth.sh MFA|}$$**
+### Authorize User: `. ./dev_reg_auth.sh MFA`
 
 <details>
-<summary><h4>Details</h4></summary>
+<summary><h5>Details</h5></summary>
   
     pi@raspberrypi5:~/ioton $ . ./dev_reg_auth.sh 150282
     
@@ -141,11 +147,21 @@ Authorize User: **$$\textcolor{red}{\verb|. ./dev_reg_auth.sh MFA|}$$**
     Auth OK. access_key / secret_access_key / session_token exported.
 </details>
 
+### Register Device: `. ./dev_reg_register.sh DevReg-0009.json`
 
-Register Device: **$$\textcolor{red}{\verb|. ./dev_reg_register.sh DevReg-0009.json|}$$**
+| Enpoint | Request Body | Response(s) |
+| :------- | :------: | -------: |
+| POST /v1/devices/device-registration  | DevicePayload  | 201, 409, 500  |
 
+Extract `device_registry_id` from payload
+
+| Response | Meaning | Payload |
+| :------- | :------: | -------: |
+| 201  | Created  | EntityPayload  |
+| 409  | Conflict  | EntityPayload  |
+| 500  | Internal Server Error  |   |
 <details>
-<summary><h4>Details</h4></summary>
+<summary><h5>Details</h5></summary>
   
     pi@raspberrypi5:~/ioton $ . ./dev_reg_register.sh DevReg-0009.json 
     
@@ -181,10 +197,19 @@ Register Device: **$$\textcolor{red}{\verb|. ./dev_reg_register.sh DevReg-0009.j
 </details>
 
 
-Provision Device: **$$\textcolor{red}{\verb|. ./dev_reg_provision.sh|}$$**
+### Provision Device: `. ./dev_reg_provision.sh`
 
+| Enpoint | Request Body | Response(s) |
+| :------- | :------: | -------: |
+| POST /v1/devices/{device_registry_id}/provision  |   | 202, 400  |
+
+
+| Response | Meaning | Payload |
+| :------- | :------: | -------: |
+| 202  | Accepted  |   |
+| 400  | Bad Request  |   |
 <details>
-<summary><h4>Details</h4></summary>
+<summary><h5>Details</h5></summary>
   
     pi@raspberrypi5:~/ioton $ . ./dev_reg_provision.sh 
     
@@ -200,10 +225,10 @@ Provision Device: **$$\textcolor{red}{\verb|. ./dev_reg_provision.sh|}$$**
 </details>
 
 
-Get Device State: **$$\textcolor{red}{\verb|. ./dev_reg_get_state.sh|}$$**
+### Get Device State: `. ./dev_reg_get_state.sh`
 
 <details>
-    <summary><h4>Details</h4></summary>
+    <summary><h5>Details</h5></summary>
   
     pi@raspberrypi5:~/ioton $ . ./dev_reg_get_state.sh 
     
@@ -243,10 +268,10 @@ Get Device State: **$$\textcolor{red}{\verb|. ./dev_reg_get_state.sh|}$$**
 </details>
 
 
-Get Device Events: **$$\textcolor{red}{\verb|. ./dev_reg_get_events.sh|}$$**
+### Get Device Events: `. ./dev_reg_get_events.sh`
 
 <details>
-    <summary><h4>Details</h4></summary>
+    <summary><h5>Details</h5></summary>
   
     pi@raspberrypi5:~/ioton $ . ./dev_reg_events.sh 
     
