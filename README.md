@@ -102,14 +102,19 @@ Once a certificate has been configured for a device, the device can be registere
 
   -----
   
-  <img  style="border:3px solid black;" width="900" src="images/DeviceRegistry.png">
+  <img  style="border:3px solid black; margin=auto; display=block; width=600;" src="images/DeviceRegistry.png">
   
   -----
 
 
 ## Bash Scripts
 
-The bash scripts eliminate the need for manual interaction with the Device Registry. They provide a bash implementation of the Device Registry API. Assumptions: username and passwords are environment variables, the JSON file with a single certificate has already been attached to a mainboard
+The bash scripts eliminate the need for manual interaction with the Device Registry. They provide a bash implementation of the Device Registry API.
+
+Assumptions:
+
+  - username and password are environment variables
+  - the JSON file list has a single certificate that has already been configured for a specific device/mainboard
 
 Typical sequence of operations:
 
